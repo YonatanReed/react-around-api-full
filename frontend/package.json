@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run build && scp -r ./build/* yonireed@yonatanReed.mooo.com:/home/yonireed/react-around-api-full/frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -41,6 +41,5 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
-  },
-  "homepage": "https://YonatanReed.github.io/around-react/"
+  }
 }
