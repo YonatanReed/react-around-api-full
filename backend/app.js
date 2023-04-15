@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const router = require('./routes/index');
-require('dotenv').config({ path: '.env' });
+require('dotenv').config({ path: './.env' });
 const app = express();
 const { PORT = 3000 } = process.env;
 const { MONGO_URL = 'mongodb://127.0.0.1:27017/aroundb' } = process.env;

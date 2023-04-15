@@ -40,7 +40,7 @@ class Api {
     }).then(this._processResponse);
   }
 
-  uploadCard({ name: name, link: link }, token) {
+  uploadCard({ name, link }, token) {
     console.log("token from upload card api frontend");
     console.log(token);
     return fetch(`${this._baseUrl}/cards`, {
