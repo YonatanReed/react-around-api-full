@@ -19,6 +19,7 @@
   "bugs": {
     "url": "https://github.com/YonatanReed/around-express/issues"
   },
+  "homepage": "https://github.com/YonatanReed/around-express#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
