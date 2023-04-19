@@ -27,29 +27,6 @@ const createCard = (req, res, next) => {
     });
 };
 
-const deleteCard = (req, res) => {
-  Card.findByIdAndRemove(req.params.cardId)
-    .orFail(() => {
-      const error = new Error('No card found with that id');
-      error.statusCode = 404;
-      throw error;
-    })
-    .then((card) => {
-      res.send({ data: card });
-    })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        res.status(400).send({ message: 'Invalid card id' });
-      } else if (err.statusCode === 404) {
-        res.status(404).send({ message: err.message });
-      } else {
-        res.status(500).send({
-          message: err.message || 'An error has occurred on the server',
-        });
-      }
-    });
-};
-
 const deleteCardById = (req, res, next) => {
   Card.findById(req.params.cardId)
     .orFail(() => {
@@ -120,7 +97,6 @@ const unlikeCard = (req, res, next) => {
 module.exports = {
   getCards,
   createCard,
-  deleteCard,
   deleteCardById,
   likeCard,
   unlikeCard,

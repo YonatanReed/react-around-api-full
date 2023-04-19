@@ -41,8 +41,6 @@ class Api {
   }
 
   uploadCard({ name, link }, token) {
-    console.log("token from upload card api frontend");
-    console.log(token);
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
@@ -57,7 +55,6 @@ class Api {
   }
 
   likeCard(id, token) {
-    console.log("likeCard");
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "PUT",
       headers: {
@@ -68,8 +65,6 @@ class Api {
   }
 
   unLikeCard(id, token) {
-    console.log("unLikeCard");
-
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: "DELETE",
       headers: {
@@ -103,7 +98,6 @@ class Api {
   }
 
   changeLikeCardStatus(id, isLiked, token) {
-    console.log("anahnu po?");
     return isLiked ? this.likeCard(id, token) : this.unLikeCard(id, token);
   }
 }

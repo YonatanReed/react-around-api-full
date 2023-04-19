@@ -24,7 +24,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [tooltipStatus, setTooltipStatus] = useState("");
   const [isInfoToolTipOpen, setIsInfoToolTipOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const history = useHistory();
   const [selectedCard, setSelectedCard] = useState({

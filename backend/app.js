@@ -17,12 +17,12 @@ app.use(cors());
 app.options('*', cors());
 
 app.use(helmet());
-app.use(limiter);
+app.use(requestLog);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(requestLog);
+app.use(limiter);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
