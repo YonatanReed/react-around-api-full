@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
+require('dotenv').config({ path: './.env' });
+
 const router = require('./routes/index');
 
 const app = express();
@@ -11,7 +13,6 @@ const { MONGO_URL = 'mongodb://127.0.0.1:27017/aroundb' } = process.env;
 const error = require('./middleware/error');
 const { requestLog, errorLog } = require('./middleware/logger');
 const limiter = require('./middleware/limiter');
-require('dotenv').config({ path: './.env' });
 
 app.use(cors());
 app.options('*', cors());
