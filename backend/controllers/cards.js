@@ -36,9 +36,9 @@ const deleteCardById = (req, res, next) => {
       if (card.owner.toString() !== req.user._id) {
         next(new ForbiddenError('You can only delete your own cards'));
       } else {
-        Card.findByIdAndRemove(req.params.cardId).then((removeCard) =>
-          res.status(200).send(removeCard)
-        );
+        Card.findByIdAndRemove(req.params.cardId)
+          .then((removeCard) => res.status(200).send(removeCard)
+          );
       }
     })
     .catch(next);

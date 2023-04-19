@@ -71,11 +71,12 @@ const validateUpdateAvatar = celebrate({
 
 const validateCreateCard = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().required().min(2).max(30).messages({
-      'string.empty': 'The name field must be filled in',
-      'string.min': ' At least 2 characters',
-      'string.max': ' Max 30 characters',
-    }),
+    name: Joi.string().required().min(2).max(30)
+      .messages({
+        'string.empty': 'The name field must be filled in',
+        'string.min': ' At least 2 characters',
+        'string.max': ' Max 30 characters',
+      }),
     link: Joi.string().required().custom(validateURL).message('Invalid URL'),
   }),
 });

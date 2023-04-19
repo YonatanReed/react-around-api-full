@@ -11,7 +11,9 @@ const { errorMassage } = require('../helpers/utils');
 const { JWT_SECRET = 'default_secret_key' } = process.env;
 
 const createUser = (req, res, next) => {
-  const { name, about, avatar, email, password } = req.body;
+  const {
+    name, about, avatar, email, password
+  } = req.body;
   User.findOne({ email })
     .then((user) => {
       if (user) {
@@ -19,14 +21,13 @@ const createUser = (req, res, next) => {
       }
       return bcrypt.hash(password, 10);
     })
-    .then((hash) =>
-      User.create({
-        name,
-        about,
-        avatar,
-        email,
-        password: hash,
-      })
+    .then((hash) => User.create({
+      name,
+      about,
+      avatar,
+      email,
+      password: hash,
+    })
     )
     .then((user) => {
       res.status(200).send({
@@ -67,17 +68,17 @@ const getUsers = (req, res, next) => {
     .catch(next);
 };
 
-const getCurrentUser = (req, res, next) => {
-  getUserInfo(req.user._id, res, next);
-};
-
 const getUserInfo = (id, res, next) => {
   User.findById(id)
     .orFail(() => {
-      throw new notFoundError('No user with matching ID found');
+      throw new NotFoundError('No user with matching ID found');
     })
     .then((users) => res.send(users))
     .catch(next);
+};
+
+const getCurrentUser = (req, res, next) => {
+  getUserInfo(req.user._id, res, next);
 };
 
 const getUserById = (req, res, next) => {
